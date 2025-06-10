@@ -130,16 +130,19 @@
           style="position: relative; top: -16px; left: -64px"
         >
           <img
+            id="one"
             src="assets/one.png"
             class="slide-left slide-delay-1 img-fluid"
             alt="Boost Immunity"
           />
           <img
+            id="two"
             src="assets/two.png"
             class="slide-left slide-delay-2 img-fluid"
             alt="Early Recovery"
           />
           <img
+            id="three"
             src="assets/three.png"
             class="slide-left slide-delay-3 img-fluid"
             alt="Catch-Up Growth"
@@ -151,6 +154,7 @@
         >
           <div style="position: relative">
             <img
+              id="logo"
               src="assets/logo.png"
               alt="WelTone Logo"
               style="
@@ -162,6 +166,7 @@
               "
             />
             <img
+              id="rays"
               src="assets/rays.png"
               alt="Rays Background"
               class="rays-img rise-up"
@@ -174,33 +179,65 @@
                 z-index: 1;
               "
             />
-            <img
-              src="assets/boy.png"
-              alt="WelTone Warrior"
-              class="character-img drop-in"
-              style="
-                position: relative;
-                z-index: 1;
-                top: -22px;
-                left: -10px;
-                height: 503px;
-                width: 258px;
-              "
-            />
+            <a onclick="restartAnimations()">
+              <img
+                id="boy"
+                src="assets/boy.png"
+                alt="WelTone Warrior"
+                class="character-img drop-in"
+                style="
+                  position: relative;
+                  z-index: 1;
+                  top: -22px;
+                  left: -10px;
+                  height: 503px;
+                  width: 258px;
+                "
+              />
+            </a>
           </div>
         </div>
       </div>
     </div>
 
     <script>
-      let refreshed = false;
+      function restartAnimations() {
+        // Get all animated elements with their correct IDs
+        const animatedElements = [
+          {
+            element: document.getElementById("one"),
+            classes: ["slide-left", "slide-delay-1"],
+          },
+          {
+            element: document.getElementById("two"),
+            classes: ["slide-left", "slide-delay-2"],
+          },
+          {
+            element: document.getElementById("three"),
+            classes: ["slide-left", "slide-delay-3"],
+          },
+          { element: document.getElementById("rays"), classes: ["rise-up"] },
+          { element: document.getElementById("boy"), classes: ["drop-in"] },
+        ];
 
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
-          location.reload();
-        }
-      });
+        // Remove animation classes from all elements
+        animatedElements.forEach(({ element, classes }) => {
+          if (element) {
+            element.classList.remove(...classes);
+            // Force reflow
+            element.offsetHeight;
+          }
+        });
+
+        // Add animation classes back with a small delay
+        setTimeout(() => {
+          animatedElements.forEach(({ element, classes }) => {
+            if (element) {
+              element.classList.add(...classes);
+            }
+          });
+        }, 50);
+      }
     </script>
   </body>
 </html>

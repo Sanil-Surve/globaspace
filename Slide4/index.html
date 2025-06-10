@@ -124,6 +124,7 @@
           <img
             src="assets/the-modern.png"
             alt="WelTone Logo"
+            id="logo"
             style="
               position: absolute;
               top: 57px;
@@ -136,6 +137,7 @@
           <img
             src="assets/associate-with.png"
             alt="Rays Background"
+            id="associate"
             class="rays-img rise-up"
             style="
               position: absolute;
@@ -158,9 +160,10 @@
               flex-direction: column;
             "
           >
-            <a onclick="Android.refreshPage()">
+            <a onclick="restartAnimations()">
               <img
                 src="assets/pointers4.png"
+                id="pointer"
                 class="slide-left slide-delay-1 img-fluid"
                 alt="Boost Immunity"
                 style="margin-top: 289px; margin-left: 127px"
@@ -182,5 +185,42 @@
         </div>
       </div>
     </div>
+    <script>
+      function restartAnimations() {
+        // Get all animated elements
+        const animatedElements = [
+          document.getElementById("logo"),
+          document.getElementById("associate"),
+          document.getElementById("pointer"),
+        ];
+
+        // Remove animation classes
+        animatedElements.forEach((element) => {
+          if (element) {
+            element.classList.remove(
+              "drop-in",
+              "rise-up",
+              "slide-left",
+              "slide-delay-1"
+            );
+            // Force reflow
+            element.offsetHeight;
+          }
+        });
+
+        // Add animation classes back with a small delay
+        setTimeout(() => {
+          // const logo = document.getElementById("logo");
+          const associate = document.getElementById("associate");
+          const pointer = document.getElementById("pointer");
+
+          if (logo) logo.classList.add("drop-in");
+          if (associate) associate.classList.add("rise-up");
+          if (pointer) {
+            pointer.classList.add("slide-left", "slide-delay-1");
+          }
+        }, 50);
+      }
+    </script>
   </body>
 </html>
