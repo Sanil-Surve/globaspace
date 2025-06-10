@@ -116,26 +116,29 @@
                 z-index: 5;
               "
             />
-            <img
-              src="assets/medicine-box.png"
-              alt="Medicine Box"
-              id="zoomImage"
-              style="
-                position: absolute;
-                z-index: 1;
-                top: -215px;
-                left: -358px;
-                height: 433px;
-                width: 614px;
-                transition: transform 0.3s ease-in-out;
-                cursor: pointer;
-              "
-              onclick="this.style.transform = 'scale(1.2)'; setTimeout(() => { this.style.transform = 'scale(1)'; }, 500);"
-            />
+            <a data-bs-toggle="modal" data-bs-target="#imageModal">
+              <img
+                src="assets/medicine-box.png"
+                alt="Medicine Box"
+                id="zoomImage"
+                style="
+                  position: absolute;
+                  z-index: 1;
+                  top: -215px;
+                  left: -358px;
+                  height: 433px;
+                  width: 614px;
+                  transition: transform 0.3s ease-in-out;
+                  cursor: pointer;
+                "
+                onclick="this.style.transform = 'scale(1.2)'; setTimeout(() => { this.style.transform = 'scale(1)'; }, 500);"
+              />
+            </a>
           </div>
         </div>
       </div>
     </div>
+    <script src="main.js"></script>
     <script>
       document
         .getElementById("refreshImg")
@@ -144,4 +147,28 @@
         });
     </script>
   </body>
+  <div
+    class="modal fade"
+    id="imageModal"
+    tabindex="-1"
+    aria-labelledby="imageModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Medicine Box</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/medicine-box.png" alt="Slide" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
