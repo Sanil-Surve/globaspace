@@ -106,6 +106,7 @@
           <div style="position: relative; top: -158px; left: -55px">
             <img
               src="assets/weltone-tittle.png"
+              id="refreshImg"
               alt="WelTone Logo"
               style="
                 position: absolute;
@@ -136,14 +137,11 @@
       </div>
     </div>
     <script>
-      let refreshed = false;
-
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
+      document
+        .getElementById("refreshImg")
+        .addEventListener("click", function () {
           location.reload();
-        }
-      });
+        });
     </script>
   </body>
 </html>
