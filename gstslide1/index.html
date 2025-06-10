@@ -152,6 +152,16 @@
       </div>
     </div>
     <script src="main.js"></script>
+    <script>
+      let refreshed = false;
+
+      document.addEventListener("click", function () {
+        if (!refreshed) {
+          refreshed = true;
+          location.reload();
+        }
+      });
+    </script>
   </body>
 
   <!-- first Slide -->

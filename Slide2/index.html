@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WelTone Animation</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="global.css" rel="stylesheet" />
     <style>
       html,
       body {
@@ -191,11 +188,20 @@
       </div>
     </div>
     <script>
-      document.addEventListener("visibilitychange", function () {
-        if (document.hidden) {
-          console.log("Browser tab is hidden");
-        } else {
-          console.log("Browser tab is visible");
+      // document.addEventListener("visibilitychange", function () {
+      //   if (document.hidden) {
+      //     console.log("Browser tab is hidden");
+      //   } else {
+      //     console.log("Browser tab is visible");
+      //     location.reload();
+      //   }
+      // });
+
+      let refreshed = false;
+
+      document.addEventListener("click", function () {
+        if (!refreshed) {
+          refreshed = true;
           location.reload();
         }
       });
