@@ -144,19 +144,21 @@
           class="col-sm-3 d-flex flex-column align-items-md-center gap-4 mt-4 mb-2"
           style="position: relative; top: -16px; left: -64px"
         >
-          <img
-            src="assets/leading-to.png"
-            alt="Bottle"
-            class="slide-left"
-            style="
-              width: 333px;
-              justify-content: center;
-              display: flex;
-              align-items: center;
-              margin-top: 86px;
-              margin-left: 189px;
-            "
-          />
+          <a onclick="restartAnimation()">
+            <img
+              src="assets/leading-to.png"
+              alt="Bottle"
+              class="slide-left"
+              style="
+                width: 333px;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                margin-top: 86px;
+                margin-left: 189px;
+              "
+            />
+          </a>
         </div>
 
         <div
@@ -207,14 +209,45 @@
       </div>
     </div>
     <script>
-      let refreshed = false;
+      function restartAnimation() {
+        // Get all elements with animation classes
+        const animatedElements = document.querySelectorAll(
+          '.slide-left, .slide-right, .drop-in, .rise-up, .zoom-animation, [class*="slide-delay-"]'
+        );
 
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
-          location.reload();
-        }
-      });
+        // Remove animation classes and force reflow
+        animatedElements.forEach((element) => {
+          // Store original animation classes
+          const originalClasses = Array.from(element.classList).filter(
+            (className) =>
+              className.startsWith("slide-") ||
+              className.startsWith("drop-") ||
+              className.startsWith("rise-") ||
+              className.startsWith("zoom-") ||
+              className.startsWith("slide-delay-")
+          );
+
+          // Create a data attribute to store original classes
+          element.dataset.originalAnimations = originalClasses.join(" ");
+
+          // Remove all animation classes
+          element.classList.remove(...originalClasses);
+
+          // Force reflow
+          void element.offsetWidth;
+        });
+
+        // Re-add animation classes after a short delay
+        setTimeout(() => {
+          animatedElements.forEach((element) => {
+            if (element.dataset.originalAnimations) {
+              const originalClasses =
+                element.dataset.originalAnimations.split(" ");
+              element.classList.add(...originalClasses);
+            }
+          });
+        }, 50);
+      }
     </script>
   </body>
 </html>

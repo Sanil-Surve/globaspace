@@ -170,41 +170,61 @@
                 z-index: 0;
               "
             />
-            <img
-              src="assets/32powerful.png"
-              alt="WelTone Warrior"
-              class="slide-right"
-              style="
-                position: relative;
-                z-index: 1;
-                top: 270px;
-                left: 27px;
-                height: 122px;
-                width: 243px;
-              "
-            />
+            <a onclick="restartAnimation()">
+              <img
+                src="assets/32powerful.png"
+                alt="WelTone Warrior"
+                class="slide-right"
+                style="
+                  position: relative;
+                  z-index: 1;
+                  top: 270px;
+                  left: 27px;
+                  height: 122px;
+                  width: 243px;
+                "
+              />
+            </a>
           </div>
         </div>
       </div>
     </div>
     <script>
-      // document.addEventListener("visibilitychange", function () {
-      //   if (document.hidden) {
-      //     console.log("Browser tab is hidden");
-      //   } else {
-      //     console.log("Browser tab is visible");
-      //     location.reload();
-      //   }
-      // });
+      function restartAnimation() {
+        // Get all elements with animation classes
+        const animatedElements = document.querySelectorAll(
+          ".slide-left, .slide-right, .rise-up, .zoom-animation"
+        );
 
-      let refreshed = false;
+        // Remove animation classes and force reflow
+        animatedElements.forEach((element) => {
+          const classesToRemove = Array.from(element.classList).filter(
+            (className) =>
+              className.startsWith("slide-") ||
+              className.startsWith("rise-") ||
+              className.startsWith("zoom-") ||
+              className.startsWith("slide-delay-")
+          );
 
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
-          location.reload();
-        }
-      });
+          element.classList.remove(...classesToRemove);
+          void element.offsetWidth; // Trigger reflow
+        });
+
+        // Re-add animation classes after a short delay
+        setTimeout(() => {
+          animatedElements.forEach((element) => {
+            // Restore original classes based on element's role
+            if (element.src.includes("bottleDescription")) {
+              element.classList.add("zoom-animation");
+            } else if (element.src.includes("badgeRed")) {
+              element.classList.add("slide-right");
+            } else if (element.src.includes("32powerful")) {
+              element.classList.add("slide-right");
+            }
+            // Add more conditions as needed for other elements
+          });
+        }, 50);
+      }
     </script>
   </body>
 </html>

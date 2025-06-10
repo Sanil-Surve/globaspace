@@ -104,18 +104,19 @@
 
         <div class="d-flex flex-column align-items-end justify-content-end">
           <div style="position: relative; top: -158px; left: -377px">
-            <img
-              src="assets/logo.png"
-              alt="WelTone Logo"
-              style="
-                position: absolute;
-                top: -334px;
-                left: 478px;
-                width: 513px;
-                z-index: 5;
-              "
-            />
-
+            <a onclick="restartAnimation()">
+              <img
+                src="assets/logo.png"
+                alt="WelTone Logo"
+                style="
+                  position: absolute;
+                  top: -334px;
+                  left: 478px;
+                  width: 513px;
+                  z-index: 5;
+                "
+              />
+            </a>
             <video
               src="assets/syrupvideo.mp4"
               autoplay
@@ -134,14 +135,31 @@
       </div>
     </div>
     <script>
-      let refreshed = false;
+      function restartAnimation() {
+        // Get all slide-left animated elements
+        const slideElements = document.querySelectorAll(".slide-left");
 
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
-          location.reload();
-        }
-      });
+        // Remove animation classes and force reflow
+        slideElements.forEach((element) => {
+          // Store original classes before removing
+          const originalClasses = Array.from(element.classList).filter((cls) =>
+            cls.startsWith("slide-")
+          );
+
+          element.classList.remove(
+            "slide-left",
+            "slide-delay-1",
+            "slide-delay-2",
+            "slide-delay-3"
+          );
+          void element.offsetWidth; // Trigger reflow
+
+          // Restore original classes after a short delay
+          setTimeout(() => {
+            element.classList.add(...originalClasses);
+          }, 50);
+        });
+      }
     </script>
   </body>
 </html>

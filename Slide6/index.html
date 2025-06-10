@@ -113,11 +113,13 @@
   <body>
     <div class="d-flex flex-column p-2 w-auto h-auto">
       <div class="d-flex justify-content-center align-items-start">
-        <img
-          src="assets/tittle.png"
-          alt="Title"
-          style="position: relative; top: 52px; width: 642px"
-        />
+        <a onclick="restartAnimation()">
+          <img
+            src="assets/tittle.png"
+            alt="Title"
+            style="position: relative; top: 52px; width: 642px"
+          />
+        </a>
       </div>
       <div
         class="d-flex flex-row justify-content-between position-relative top-0 start-50"
@@ -137,14 +139,49 @@
       </div>
     </div>
     <script>
-      let refreshed = false;
+      function restartAnimation() {
+        // Cache selector for better performance
+        const animatedElements = document.querySelectorAll(
+          '[class*="slide-"], .rise-up, .zoom-animation'
+        );
 
-      const log = document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
-          location.reload();
-        }
-      });
+        // Create a document fragment for batch DOM operations
+        const fragment = document.createDocumentFragment();
+
+        // Create a hidden clone of each element to force repaint
+        animatedElements.forEach((element) => {
+          const clone = element.cloneNode(true);
+          clone.style.visibility = "hidden";
+          clone.style.position = "absolute";
+          fragment.appendChild(clone);
+        });
+
+        document.body.appendChild(fragment);
+
+        // Remove and re-add animation classes
+        animatedElements.forEach((element) => {
+          const animClasses = Array.from(element.classList).filter(
+            (cls) =>
+              cls.includes("slide-") ||
+              cls.includes("rise-") ||
+              cls.includes("zoom-")
+          );
+
+          element.classList.remove(...animClasses);
+
+          // Use requestAnimationFrame for smoother transitions
+          requestAnimationFrame(() => {
+            element.classList.add(...animClasses);
+          });
+        });
+
+        // Clean up clones after animations restart
+        setTimeout(() => {
+          while (fragment.firstChild) {
+            fragment.removeChild(fragment.lastChild);
+          }
+        }, 100);
+      }
     </script>
   </body>
 </html>

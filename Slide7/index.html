@@ -104,18 +104,20 @@
 
         <div class="text-center d-flex align-items-end justify-content-end">
           <div style="position: relative; top: -158px; left: -55px">
-            <img
-              src="assets/weltone-tittle.png"
-              id="refreshImg"
-              alt="WelTone Logo"
-              style="
-                position: absolute;
-                top: -369px;
-                left: -342px;
-                width: 565px;
-                z-index: 5;
-              "
-            />
+            <a onclick="restartAnimation()">
+              <img
+                src="assets/weltone-tittle.png"
+                id="refreshImg"
+                alt="WelTone Logo"
+                style="
+                  position: absolute;
+                  top: -369px;
+                  left: -342px;
+                  width: 565px;
+                  z-index: 5;
+                "
+              />
+            </a>
             <a data-bs-toggle="modal" data-bs-target="#imageModal">
               <img
                 src="assets/medicine-box.png"
@@ -140,11 +142,36 @@
     </div>
     <script src="main.js"></script>
     <script>
-      document
-        .getElementById("refreshImg")
-        .addEventListener("click", function () {
-          location.reload();
+      function restartAnimation() {
+        // Get all elements with animation classes
+        const animatedElements = document.querySelectorAll(
+          '[class*="slide-"], .zoom-animation'
+        );
+
+        // Store original classes for each element
+        const originalClasses = {};
+        animatedElements.forEach((element) => {
+          originalClasses[element.src] = Array.from(element.classList);
         });
+
+        // Remove animation classes and force reflow
+        animatedElements.forEach((element) => {
+          const classesToRemove = Array.from(element.classList).filter(
+            (className) =>
+              className.startsWith("slide-") || className === "zoom-animation"
+          );
+
+          element.classList.remove(...classesToRemove);
+          void element.offsetWidth; // Trigger reflow
+        });
+
+        // Re-add original animation classes
+        animatedElements.forEach((element) => {
+          if (originalClasses[element.src]) {
+            element.classList.add(...originalClasses[element.src]);
+          }
+        });
+      }
     </script>
   </body>
   <div
