@@ -107,12 +107,14 @@
       class="d-flex flex-column p-2 w-auto h-auto justify-content-center align-items-start"
     >
       <div class="d-flex justify-content-center align-items-start">
-        <img
-          src="assets/1a.png"
-          id="refreshImg"
-          alt="Title"
-          style="position: relative; top: 52px; width: 922px; left: 135px"
-        />
+        <a onclick="restartAnimations()">
+          <img
+            src="assets/1a.png"
+            id="refreshImg"
+            alt="Title"
+            style="position: relative; top: 52px; width: 922px; left: 135px"
+          />
+        </a>
       </div>
       <div
         class="d-flex flex-row justify-content-between position-relative top-0 start-50"
@@ -152,11 +154,51 @@
     </div>
     <script src="main.js"></script>
     <script>
-      document
-        .getElementById("refreshImg")
-        .addEventListener("click", function () {
-          location.reload();
+      function restartAnimations() {
+        // Get all elements with animation classes
+        const animatedElements = document.querySelectorAll(
+          ".slide-left, .slide-right, .rise-up, .zoom-animation"
+        );
+
+        // Also include specific elements that have animations via style attribute
+        const additionalAnimatedElements = [
+          document.getElementById("refreshImg"),
+          document.querySelector('img[src="assets/2a.png"]'),
+          document.querySelector('img[src="assets/3a.png"]'),
+          document.querySelector('img[src="assets/4a.png"]'),
+          document.querySelector('img[src="assets/5a.png"]'),
+        ];
+
+        // Combine all elements that need animation restart
+        const allElements = [
+          ...animatedElements,
+          ...additionalAnimatedElements,
+        ];
+
+        // Remove animation classes and force reflow
+        allElements.forEach((element) => {
+          if (!element) return;
+
+          // Get current animation classes
+          const classes = Array.from(element.classList).filter(
+            (cls) =>
+              cls.includes("slide-") ||
+              cls.includes("rise-up") ||
+              cls.includes("zoom-animation")
+          );
+
+          // Remove animation classes
+          element.classList.remove(...classes);
+
+          // Force reflow to ensure animation reset
+          void element.offsetWidth;
+
+          // Re-add animation classes after a small delay
+          setTimeout(() => {
+            element.classList.add(...classes);
+          }, 50);
         });
+      }
     </script>
   </body>
 
