@@ -122,30 +122,143 @@
       <div
         class="d-flex flex-row justify-content-between position-relative top-0 start-50"
       >
-        <img
-          src="assets/2a.png"
-          alt=""
-          class="slide-right"
-          style="position: absolute; top: 61px; left: -494px; width: 461px"
-        />
-        <img
-          src="assets/3a.png"
-          alt=""
-          class="slide-left"
-          style="position: absolute; width: 450px; top: 62px; left: 45px"
-        />
+        <a data-bs-toggle="modal" data-bs-target="#imageModal">
+          <img
+            src="assets/2a.png"
+            alt=""
+            class="slide-right"
+            style="position: absolute; top: 61px; left: -494px; width: 461px"
+          />
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal2">
+          <img
+            src="assets/3a.png"
+            alt=""
+            class="slide-left"
+            style="position: absolute; width: 450px; top: 62px; left: 45px"
+          />
+        </a>
 
-        <img
-          src="assets/4a.png"
-          alt=""
-          style="position: absolute; top: 272px; left: -457px; width: 461px"
-        />
-        <img
-          src="assets/5a.png"
-          alt=""
-          style="position: absolute; width: 461px; top: 272px; left: 4px"
-        />
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal3">
+          <img
+            src="assets/4a.png"
+            alt=""
+            style="position: absolute; top: 272px; left: -457px; width: 461px"
+          />
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal4">
+          <img
+            src="assets/5a.png"
+            alt=""
+            style="position: absolute; width: 461px; top: 272px; left: 4px"
+          />
+        </a>
       </div>
     </div>
+    <script src="main.js"></script>
   </body>
+
+  <!-- first Slide -->
+  <div
+    class="modal fade"
+    id="imageModal"
+    tabindex="-1"
+    aria-labelledby="imageModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">PCOS Management</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/popup-1.png" alt="Slide" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Slide Modal -->
+  <div
+    class="modal fade"
+    id="imageModal2"
+    tabindex="-1"
+    aria-labelledby="imageModalLabel2"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel2">PCOS Management</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/popup-2.png" alt="Slide" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Third Slide Modal -->
+  <div
+    class="modal fade"
+    id="imageModal3"
+    tabindex="-1"
+    aria-labelledby="imageModalLabel3"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel3">PCOS Management</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/popup-3.png" alt="Slide" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fourth Slide Modal -->
+  <div
+    class="modal fade"
+    id="imageModal4"
+    tabindex="-1"
+    aria-labelledby="imageModalLabel4"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel4">PCOS Management</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/popup-4.png" alt="Slide" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
