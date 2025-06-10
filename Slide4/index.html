@@ -160,6 +160,7 @@
           >
             <img
               src="assets/pointers4.png"
+              id="refreshImg"
               class="slide-left slide-delay-1 img-fluid"
               alt="Boost Immunity"
               style="margin-top: 289px; margin-left: 248px"
@@ -182,12 +183,12 @@
     </div>
 
     <script>
-      let refreshed = false;
-
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
-          location.reload();
+      document.addEventListener("DOMContentLoaded", function () {
+        const img = document.getElementById("refreshImg");
+        if (img) {
+          img.addEventListener("click", function () {
+            location.reload();
+          });
         }
       });
     </script>

@@ -100,9 +100,11 @@
       .slide-delay-1 {
         animation-delay: 0.3s;
       }
+
       .slide-delay-2 {
         animation-delay: 0.6s;
       }
+
       .slide-delay-3 {
         animation-delay: 0.9s;
       }
@@ -137,7 +139,7 @@
     <script>
       let refreshed = false;
 
-      document.addEventListener("click", function () {
+      const log = document.addEventListener("click", function () {
         if (!refreshed) {
           refreshed = true;
           location.reload();
