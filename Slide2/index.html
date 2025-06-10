@@ -134,12 +134,12 @@
             src="assets/bottleDescription.png"
             alt="Bottle"
             style="
-              width: 550px;
+              width: 512px;
               justify-content: center;
               display: flex;
               align-items: center;
               margin-top: 176px;
-              margin-left: 225px;
+              margin-left: 270px;
             "
             class="zoom-animation"
           />
@@ -148,15 +148,15 @@
         <div
           class="col-md-3 text-center d-flex flex-column align-items-end justify-content-end"
         >
-          <div style="position: relative; top: -302px; left: 102px">
+          <div style="position: relative; top: -283px; left: 150px">
             <img
               src="assets/logo.png"
               alt="WelTone Logo"
               style="
                 position: absolute;
-                top: -223px;
+                top: -208px;
                 left: -123px;
-                width: 499px;
+                width: 483px;
                 z-index: 5;
               "
             />
@@ -190,5 +190,15 @@
         </div>
       </div>
     </div>
+    <script>
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          console.log("Browser tab is hidden");
+        } else {
+          console.log("Browser tab is visible");
+          location.reload();
+        }
+      });
+    </script>
   </body>
 </html>
