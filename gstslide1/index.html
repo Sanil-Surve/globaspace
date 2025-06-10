@@ -111,6 +111,7 @@
       <div class="d-flex justify-content-center align-items-start">
         <img
           src="assets/1a.png"
+          id="refreshImg"
           alt="Title"
           style="position: relative; top: 52px; width: 922px; left: 135px"
         />
@@ -153,14 +154,11 @@
     </div>
     <script src="main.js"></script>
     <script>
-      let refreshed = false;
-
-      document.addEventListener("click", function () {
-        if (!refreshed) {
-          refreshed = true;
+      document
+        .getElementById("refreshImg")
+        .addEventListener("click", function () {
           location.reload();
-        }
-      });
+        });
     </script>
   </body>
 
