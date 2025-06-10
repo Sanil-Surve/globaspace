@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide Animation</title>
+    <link href="global.css" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      body {
+        background-image: url("assets/3bg1.jpg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      /* Animation Keyframes */
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomInOut {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .zoom-animation {
+        animation: zoomInOut 2s ease-in-out infinite;
+      }
+
+      .slide-left {
+        animation: slideInLeft 1s ease-out forwards;
+        opacity: 0;
+      }
+
+      .slide-delay-1 {
+        animation-delay: 0.3s;
+      }
+      .slide-delay-2 {
+        animation-delay: 0.6s;
+      }
+      .slide-delay-3 {
+        animation-delay: 0.9s;
+      }
+
+      @media screen and (width: 1313px) and (height: 849px) and (orientation: landscape) {
+        body {
+          background-image: url("assets/3bg1.jpg");
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex p-2 w-auto h-auto">
+      <div class="d-flex flex-row justify-content-evenly">
+        <div
+          class="d-flex flex-column align-items-md-center justify-content-center gap-4 mt-4 mb-2"
+          style="position: relative; width: 486px; top: 3px; left: 161px"
+        >
+          <img
+            src="assets/b.png"
+            class="slide-left slide-delay-1 img-fluid"
+            alt="Boost Immunity"
+          />
+          <img
+            src="assets/a.png"
+            class="slide-left slide-delay-2 img-fluid"
+            alt="Early Recovery"
+          />
+          <img
+            src="assets/c.png"
+            class="slide-left slide-delay-3 img-fluid"
+            alt="Catch-Up Growth"
+          />
+
+          <img
+            src="assets/d.png"
+            class="slide-left slide-delay-3 img-fluid"
+            alt="Catch-Up Growth"
+          />
+        </div>
+
+        <div class="d-flex flex-column align-items-end justify-content-end">
+          <div style="position: relative; top: -158px; left: -377px">
+            <img
+              src="assets/logo.png"
+              alt="WelTone Logo"
+              style="
+                position: absolute;
+                top: -334px;
+                left: 478px;
+                width: 513px;
+                z-index: 5;
+              "
+            />
+
+            <video
+              src="assets/syrupvideo.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              style="
+                max-width: 509px;
+                position: absolute;
+                top: -123px;
+                left: 496px;
+              "
+            ></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

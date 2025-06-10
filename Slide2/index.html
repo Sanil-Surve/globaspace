@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WelTone Animation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      body {
+        background-image: url("assets/background.jpg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Animation Keyframes */
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInRight {
+        0% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes dropIn {
+        0% {
+          transform: translateY(-200px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomInOut {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes riseUp {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .zoom-animation {
+        animation: zoomInOut 3s ease-in-out infinite;
+      }
+
+      .rise-up {
+        animation: riseUp 1.2s ease-out forwards;
+        opacity: 0;
+      }
+
+      /* Animation Classes */
+      .slide-left {
+        animation: slideInLeft 1s ease-out forwards;
+        opacity: 0;
+      }
+
+      .slide-right {
+        animation: slideInRight 2s ease-out forwards;
+        opacity: 0;
+      }
+
+      .slide-delay-1 {
+        animation-delay: 0.3s;
+      }
+      .slide-delay-2 {
+        animation-delay: 0.6s;
+      }
+      .slide-delay-3 {
+        animation-delay: 0.9s;
+      }
+
+      @media screen and (width: 1180px) and (height: 820px) and (orientation: landscape) {
+        body {
+          background-image: url("assets/background.jpg");
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex p-2 w-auto h-auto">
+      <div class="d-flex flex-row justify-content-evenly">
+        <div
+          class="col-sm-3 d-flex flex-column align-items-md-center gap-4 mt-4 mb-2"
+          style="position: relative; top: -68px; left: -26px"
+        >
+          <img
+            src="assets/bottleDescription.png"
+            alt="Bottle"
+            style="
+              width: 550px;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+              margin-top: 176px;
+              margin-left: 225px;
+            "
+            class="zoom-animation"
+          />
+        </div>
+
+        <div
+          class="col-md-3 text-center d-flex flex-column align-items-end justify-content-end"
+        >
+          <div style="position: relative; top: -302px; left: 102px">
+            <img
+              src="assets/logo.png"
+              alt="WelTone Logo"
+              style="
+                position: absolute;
+                top: -223px;
+                left: -123px;
+                width: 499px;
+                z-index: 5;
+              "
+            />
+            <img
+              src="assets/badgeRed.png"
+              alt="Rays Background"
+              class="slide-right"
+              style="
+                position: absolute;
+                top: 6px;
+                left: 20px;
+                width: 235px;
+                height: 223px;
+                z-index: 0;
+              "
+            />
+            <img
+              src="assets/32powerful.png"
+              alt="WelTone Warrior"
+              class="slide-right"
+              style="
+                position: relative;
+                z-index: 1;
+                top: 270px;
+                left: 27px;
+                height: 122px;
+                width: 243px;
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

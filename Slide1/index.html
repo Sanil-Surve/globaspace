@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WelTone Animation</title>
+    <link href="global.css" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("assets/background.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      /* Animation Keyframes */
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes dropIn {
+        0% {
+          transform: translateY(-200px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomInOut {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes riseUp {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .zoom-animation {
+        animation: zoomInOut 2s ease-in-out infinite;
+      }
+
+      .rise-up {
+        animation: riseUp 1.2s ease-out forwards;
+        animation-delay: 2s;
+        opacity: 0;
+      }
+
+      /* Animation Classes */
+      .slide-left {
+        animation: slideInLeft 1s ease-out forwards;
+        opacity: 0;
+      }
+
+      .slide-delay-1 {
+        animation-delay: 0.3s;
+      }
+
+      .slide-delay-2 {
+        animation-delay: 0.6s;
+      }
+
+      .slide-delay-3 {
+        animation-delay: 0.9s;
+      }
+
+      .drop-in {
+        animation: dropIn 1s ease-out forwards;
+        animation-delay: 1s;
+        opacity: 0;
+      }
+
+      .character-img {
+        height: 497px;
+        width: 356px;
+        margin-bottom: -50px;
+        margin-left: 50px;
+      }
+      @media screen and (width: 1180px) and (height: 820px) and (orientation: landscape) {
+        body {
+          background-image: url("assets/background.png");
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex p-2 w-auto h-auto">
+      <div class="d-flex flex-row justify-content-evenly">
+        <div
+          class="col-sm-3 d-flex flex-column align-items-md-center gap-4 mt-4 mb-2"
+          style="position: relative; top: -16px; left: -64px"
+        >
+          <img
+            src="assets/one.png"
+            class="slide-left slide-delay-1 img-fluid"
+            alt="Boost Immunity"
+          />
+          <img
+            src="assets/two.png"
+            class="slide-left slide-delay-2 img-fluid"
+            alt="Early Recovery"
+          />
+          <img
+            src="assets/three.png"
+            class="slide-left slide-delay-3 img-fluid"
+            alt="Catch-Up Growth"
+          />
+        </div>
+
+        <div
+          class="col-md-3 text-center d-flex align-items-end justify-content-end"
+        >
+          <div style="position: relative">
+            <img
+              src="assets/logo.png"
+              alt="WelTone Logo"
+              style="
+                position: absolute;
+                top: -171px;
+                left: -97px;
+                width: 487px;
+                z-index: 5;
+              "
+            />
+            <img
+              src="assets/rays.png"
+              alt="Rays Background"
+              class="rays-img rise-up"
+              style="
+                position: absolute;
+                top: -1px;
+                left: -110px;
+                width: 539px;
+                height: 426px;
+                z-index: 1;
+              "
+            />
+            <img
+              src="assets/boy.png"
+              alt="WelTone Warrior"
+              class="character-img drop-in"
+              style="
+                position: relative;
+                z-index: 1;
+                top: -22px;
+                left: -10px;
+                height: 503px;
+                width: 258px;
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

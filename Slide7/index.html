@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide 7 Animation</title>
+    <link href="global.css" rel="stylesheet" />
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        background: url("assets/background.jpg") center/contain no-repeat;
+      }
+
+      /* Animation Keyframes */
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomInOut {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* .zoom-animation {
+        animation: zoomInOut 2s ease-in-out infinite;
+      } */
+
+      .zoom-animation:hover {
+        animation: zoomInOut 0.6s ease-in-out;
+      }
+
+      .slide-left {
+        animation: slideInLeft 1s ease-out forwards;
+        opacity: 0;
+      }
+
+      .slide-delay-1 {
+        animation-delay: 0.3s;
+      }
+      .slide-delay-2 {
+        animation-delay: 0.6s;
+      }
+      .slide-delay-3 {
+        animation-delay: 0.9s;
+      }
+      .slide-delay-4 {
+        animation-delay: 1.2s;
+      }
+      .slide-delay-5 {
+        animation-delay: 1.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex">
+      <div class="d-flex flex-row justify-content-evenly w-100">
+        <div
+          class="d-flex flex-column align-items-center gap-4 mt-4 mb-2"
+          style="position: relative; width: 379px; top: 11px; left: -115px"
+        >
+          <img
+            src="assets/1-omega.png"
+            class="slide-left slide-delay-1 img-fluid"
+            alt="Boost Immunity"
+          />
+          <img
+            src="assets/2-green-tea.png"
+            class="slide-left slide-delay-2 img-fluid"
+            alt="Early Recovery"
+          />
+          <img
+            src="assets/3-curcumin.png"
+            class="slide-left slide-delay-3 img-fluid"
+            alt="Catch-Up Growth"
+          />
+          <img
+            src="assets/4-Grapefruit.png"
+            class="slide-left slide-delay-4 img-fluid"
+            alt="Catch-Up Growth"
+          />
+          <img
+            src="assets/5-Fortified.png"
+            class="slide-left slide-delay-5 img-fluid"
+            alt="Catch-Up Growth"
+          />
+        </div>
+
+        <div class="text-center d-flex align-items-end justify-content-end">
+          <div style="position: relative; top: -158px; left: -55px">
+            <img
+              src="assets/weltone-tittle.png"
+              alt="WelTone Logo"
+              style="
+                position: absolute;
+                top: -369px;
+                left: -342px;
+                width: 565px;
+                z-index: 5;
+              "
+            />
+            <img
+              src="assets/medicine-box.png"
+              alt="Medicine Box"
+              id="zoomImage"
+              style="
+                position: absolute;
+                z-index: 1;
+                top: -215px;
+                left: -358px;
+                height: 433px;
+                width: 614px;
+                transition: transform 0.3s ease-in-out;
+                cursor: pointer;
+              "
+              onclick="this.style.transform = 'scale(1.2)'; setTimeout(() => { this.style.transform = 'scale(1)'; }, 500);"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
